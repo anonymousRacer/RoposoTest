@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Roposo/ViewControllers/StoryDetailController.swift"
-            timestampString = "485612058.020787"
+            timestampString = "485633338.128345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "loadDataInViews()"
             landmarkType = "5">
          </BreakpointContent>

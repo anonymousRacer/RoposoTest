@@ -32,14 +32,15 @@ class StoryDetailController: UIViewController {
     var detailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = CGSizeMake(1000, 1000)
+//        scrollView.contentSize = CGSizeMake(1000, 1000)
         return scrollView
     }()
     
     var storyImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = _bottomBorderColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .ScaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -63,6 +64,17 @@ class StoryDetailController: UIViewController {
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.font = _bigSubtitleFont
         label.textAlignment = .Left
+        return label
+    }()
+    
+    var storyDate: UILabel = {
+        let label = UILabel()
+        label.font = _bigSubtitleFont
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .Left
+        label.numberOfLines = 0
+        label.textColor = _subtitleColor
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         return label
     }()
     
@@ -187,6 +199,7 @@ class StoryDetailController: UIViewController {
             "storyImage": storyImage,
             "storyTitle": storyTitle,
             "storyDesc": storyDesc,
+            "storyDate": storyDate,
             "likesCount": likesCount,
             "commentCount": commentCount,
             "likeBtn": likeBtn,
@@ -207,22 +220,26 @@ class StoryDetailController: UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[detailContainerView(==superView)]", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[detailContainerView]|", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[detailContainerView]|", options: [], metrics: nil, views: viewsDictionary))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[storyImage(storyImageHeight)]-smallPadding-[storyTitle]-smallPadding-[storyDesc]-smallPadding-[likesCount][likeBtn(actionButtonHeight)]-smallPadding-[bottomBorder(bottomBorderHeight)]-largePadding-[postedByLabel]-[username]", options: [], metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[storyImage(storyImageHeight)]-smallPadding-[storyTitle]", options: [], metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[storyImage]|", options: [], metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-largePadding-[storyTitle]-largePadding-|", options: [], metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[storyTitle]-smallPadding-[storyDesc]-largePadding-[storyDate]", options: [NSLayoutFormatOptions.AlignAllLeading, NSLayoutFormatOptions.AlignAllTrailing], metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[storyDate]-smallPadding-[likesCount]", options: .AlignAllLeading, metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[likesCount][likeBtn(actionButtonHeight)]-smallPadding-[bottomBorder(bottomBorderHeight)]-largePadding-[postedByLabel]-[username]", options: [], metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[username][handle]-smallPadding-[userDesc]", options: [NSLayoutFormatOptions.AlignAllLeading, NSLayoutFormatOptions.AlignAllTrailing], metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-largePadding-[postedByLabel]-largePadding-|", options: [], metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[userDesc]-[followBtn(actionButtonHeight)]-largePadding-|", options: NSLayoutFormatOptions.AlignAllLeading, metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[followBtn(actionButtonWidth)]", options: NSLayoutFormatOptions.AlignAllLeading, metrics: metrics, views: viewsDictionary))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-largePadding-[storyTitle]-largePadding-|", options: [], metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[likeBtn(actionButtonWidth)]-largePadding-[commentBtn(==likeBtn)]-largePadding-[shareBtn(==likeBtn)]-largePadding-|", options: .AlignAllCenterY, metrics: metrics, views: viewsDictionary))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-largePadding-[likesCount]-largePadding-[commentCount]", options: .AlignAllCenterY, metrics: metrics, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[likesCount]-largePadding-[commentCount]", options: .AlignAllCenterY, metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-largePadding-[userImage(userImageWidth)]-largePadding-[username]-largePadding-|", options: [], metrics: metrics, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[userImage(userImageWidth)]", options: [], metrics: metrics, views: viewsDictionary))
         
         
         self.view.addConstraint(NSLayoutConstraint(item: username, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: userImage, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: storyTitle, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: storyDesc, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: storyTitle, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: storyDesc, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: storyDesc, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: likesCount, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0))
+//        self.view.addConstraint(NSLayoutConstraint(item: storyTitle, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: storyDesc, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0))
+//        self.view.addConstraint(NSLayoutConstraint(item: storyTitle, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: storyDesc, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0))
+//        self.view.addConstraint(NSLayoutConstraint(item: storyDesc, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: likesCount, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0))
     }
     
     func setupViews() {
@@ -231,6 +248,7 @@ class StoryDetailController: UIViewController {
         self.detailContainerView.addSubview(storyImage)
         self.detailContainerView.addSubview(storyTitle)
         self.detailContainerView.addSubview(storyDesc)
+        self.detailContainerView.addSubview(storyDate)
         self.detailContainerView.addSubview(likeBtn)
         self.detailContainerView.addSubview(commentBtn)
         self.detailContainerView.addSubview(shareBtn)
@@ -309,6 +327,7 @@ class StoryDetailController: UIViewController {
         userImage.sd_setImageWithURL(NSURL(string: user.getImage()), placeholderImage: _placeholder)
         storyTitle.text = story.getTitle()
         storyDesc.text = story.getStoryDesc()
+        storyDate.text = story.getVerb()
         likesCount.text = story.getLikesCount().description + " Likes"
         commentCount.text = story.getCommentCount().description + " Comments"
         setLikeState()

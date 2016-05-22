@@ -51,8 +51,9 @@ class StoryCell: UITableViewCell {
     
     var storyImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = _bottomBorderColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .ScaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
