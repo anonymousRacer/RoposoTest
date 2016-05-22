@@ -169,7 +169,6 @@ class StoryDetailController: UIViewController {
     func setupConstraints() {
         // Setup metrics dictionary
         let metrics = [
-            "navPlusStatusBarHeight": -(Constants.STATUS_BAR_HEIGHT + Constants.NAVIGATION_BAR_HEIGHT),
             "storyImageHeight": CommonFunctions.getStoryImageHeight(),
             "userImageWidth": Constants.USERIMAGE_BIG_WIDTH,
             "actionButtonWidth": Constants.ACTION_BUTTON_WIDTH,
@@ -204,7 +203,7 @@ class StoryDetailController: UIViewController {
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bottomBorder]|", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[detailScrollView]|", options: [], metrics: nil, views: viewsDictionary))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(navPlusStatusBarHeight)-[detailScrollView]|", options: [], metrics: nil, views: viewsDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(-64)-[detailScrollView]|", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[detailContainerView(==superView)]", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[detailContainerView]|", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[detailContainerView]|", options: [], metrics: nil, views: viewsDictionary))

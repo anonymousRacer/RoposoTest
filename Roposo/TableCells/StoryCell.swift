@@ -172,6 +172,7 @@ class StoryCell: UITableViewCell {
         }
         
         setLikeState()
+        likesCount.text = story.getLikesCount().description + " Likes"
         delegate?.setLikeStateFromStoryCell(sender.tag, story: story)
     }
     
@@ -274,8 +275,6 @@ class StoryCell: UITableViewCell {
         self.contentView.addConstraint(NSLayoutConstraint(item: userImage, attribute: .CenterY, relatedBy: .Equal, toItem: followBtn, attribute: .CenterY, multiplier: 1.0, constant: 0))
         self.contentView.addConstraint(NSLayoutConstraint(item: storyTitle, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: storyDesc, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0))
         self.contentView.addConstraint(NSLayoutConstraint(item: storyTitle, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: storyDesc, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: likeBtn, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: commentBtn, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: likeBtn, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: shareBtn, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0))
         self.contentView.addConstraint(NSLayoutConstraint(item: username, attribute: .Leading, relatedBy: .Equal, toItem: handle, attribute: .Leading, multiplier: 1.0, constant: 0))
     }
     

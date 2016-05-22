@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 struct Constants {
-    static let STATUS_BAR_HEIGHT: CGFloat = 20.0
-    static let NAVIGATION_BAR_HEIGHT: CGFloat = 44.0
+    static let NAV_PLUS_STATUS_BAR_HEIGHT: CGFloat = 64.0
     static let SCREEN_WIDTH: CGFloat = UIScreen.mainScreen().bounds.width
     static let USERIMAGE_WIDTH: CGFloat = 50.0
     static let USERIMAGE_BIG_WIDTH: CGFloat = 75.0

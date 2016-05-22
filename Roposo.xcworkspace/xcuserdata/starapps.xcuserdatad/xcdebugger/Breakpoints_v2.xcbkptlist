@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Roposo/ViewControllers/ViewController.swift"
-            timestampString = "485609941.448445"
+            timestampString = "485611299.489054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "createObjectsAndLoadData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Roposo/ViewControllers/StoryDetailController.swift"
-            timestampString = "485609941.448445"
+            timestampString = "485612058.020787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "loadDataInViews()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Roposo/Utils/UIConstants.swift"
-            timestampString = "485609355.263068"
+            timestampString = "485611631.489392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
             landmarkName = "Constants"
             landmarkType = "3">
          </BreakpointContent>
