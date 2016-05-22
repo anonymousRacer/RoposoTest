@@ -98,6 +98,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      If the json file is heavy, it can block UI thread
      */
     func createObjectsFromJson() {
+        // Read data from bundle
         let fileName = NSBundle.mainBundle().pathForResource("iOS-Android Data", ofType: "json")
         if fileName != nil {
             let data = NSData(contentsOfFile: fileName!)

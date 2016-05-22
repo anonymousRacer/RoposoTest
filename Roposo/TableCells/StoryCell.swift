@@ -33,6 +33,7 @@ class StoryCell: UITableViewCell {
         let label = UILabel()
         label.font = _titleFont
         label.textColor = _titleColor
+        label.lineBreakMode = .ByTruncatingTail
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -43,6 +44,7 @@ class StoryCell: UITableViewCell {
         label.font = _subtitleFont
         label.textColor = _subtitleColor
         label.numberOfLines = 1
+        label.lineBreakMode = .ByTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -59,8 +61,8 @@ class StoryCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
+        label.lineBreakMode = .ByTruncatingTail
         label.font = _titleFont
-        label.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         label.textAlignment = .Left
         return label
     }()
@@ -70,7 +72,7 @@ class StoryCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
         label.textColor = _subtitleColor
-        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.lineBreakMode = .ByTruncatingTail
         label.font = _subtitleFont
         label.textAlignment = .Left
         return label
