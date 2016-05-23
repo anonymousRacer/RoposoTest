@@ -8,7 +8,7 @@
 
 import UIKit
 import SDWebImage
-import SwiftyJSON
+import UIImageViewAlignedSwift
 
 protocol StoryDetailControllerDelegate: class {
     func setLikeStateFromDetailController(index: Int, story: Story)
@@ -32,15 +32,15 @@ class StoryDetailController: UIViewController {
     var detailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.contentSize = CGSizeMake(1000, 1000)
         return scrollView
     }()
     
-    var storyImage: UIImageView = {
-        let imageView = UIImageView()
+    var storyImage: UIImageViewAligned = {
+        let imageView = UIImageViewAligned()
         imageView.backgroundColor = _bottomBorderColor
+        imageView.contentMode = .ScaleAspectFill
+        imageView.alignment = UIImageViewAlignmentMask.Top
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .ScaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -108,7 +108,7 @@ class StoryDetailController: UIViewController {
     
     var userDesc: UILabel = {
         let label = UILabel()
-        label.font = _titleFont
+        label.font = _bigSubtitleFont
         label.textColor = _titleColor
         label.numberOfLines = 0
         label.lineBreakMode = .ByWordWrapping
@@ -330,34 +330,18 @@ class StoryDetailController: UIViewController {
         storyDate.text = story.getVerb()
         likesCount.text = story.getLikesCount().description + " Likes"
         commentCount.text = story.getCommentCount().description + " Comments"
-        setLikeState()
-        setFollowState()
+        self.storyImage.sd_setImageWithURL(NSURL(string: story.getSi()), placeholderImage: _placeholder)
         
         username.text = user.getUsername()
         handle.text = user.getHandle()
         userDesc.text = user.getAbout()
         
-        storyImage.sd_setImageWithURL(NSURL(string: story.getSi()), placeholderImage: _placeholder) {
-            (image, error, SDImageCacheType, url) in
-            if image != nil {
-                /*
-                 Image scaled to device width in background and assigned to story imageView
-                 when the task is completed
-                 */
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-                    let scaledImage = CommonFunctions.scaleImageToWidth(image)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.storyImage.contentMode = .Top
-                        self.storyImage.image = scaledImage
-                    })
-                })
-            }
-        }
+        setLikeState()
+        setFollowState()
         
         likeBtn.addTarget(self, action: #selector(StoryDetailController.toggleLikeState(_:)), forControlEvents: .TouchUpInside)
         followBtn.addTarget(self, action: #selector(StoryDetailController.toggleFollowState), forControlEvents: .TouchUpInside)
         shareBtn.addTarget(self, action: #selector(StoryDetailController.shareStory(_:)), forControlEvents: .TouchUpInside)
-        
     }
     
     override func viewDidLoad() {

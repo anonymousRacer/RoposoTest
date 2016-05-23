@@ -7,7 +7,9 @@
 //
 
 let APP_NAME = "Roposo"
-let APP_FONT_NAME = "SourceSansPro-Regular"
+let APP_FONT_NAME = "SourceSansPro"
+let FONT_REGULAR = "-Regular"
+let FONT_SEMIBOLD = "-Semibold"
 
 /*  User JSON constants   */
 let ABOUT = "about"

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIImageViewAlignedSwift
 
 protocol StoryCellDelegate: class {
     func shareStory(index: Int, sender: UIButton)
@@ -49,11 +50,12 @@ class StoryCell: UITableViewCell {
         return label
     }()
     
-    var storyImage: UIImageView = {
-        let imageView = UIImageView()
+    var storyImage: UIImageViewAligned = {
+        let imageView = UIImageViewAligned()
         imageView.backgroundColor = _bottomBorderColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .ScaleAspectFill
+        imageView.alignment = UIImageViewAlignmentMask.Top
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -202,27 +204,11 @@ class StoryCell: UITableViewCell {
         self.handle.text = user.getHandle()
         self.storyTitle.text = story.getTitle()
         self.storyDesc.text = story.getStoryDesc()
+        self.storyImage.sd_setImageWithURL(NSURL(string: story.getSi()), placeholderImage: _placeholder)
         self.likeBtn.setTitle(story.getLikesCount().description, forState: .Normal)
         self.commentBtn.setTitle(story.getCommentCount().description, forState: .Normal)
         self.likesCount.text = story.getLikesCount().description + " Likes"
         self.commentCount.text = story.getCommentCount().description + " Comments"
-        
-        self.storyImage.sd_setImageWithURL(NSURL(string: story.getSi()), placeholderImage: _placeholder) {
-            (image, error, SDImageCacheType, url) in
-            if image != nil {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-                    /*
-                     Image scaled to device width in background and assigned to story imageView
-                     when the task is completed
-                     */
-                    let scaledImage = CommonFunctions.scaleImageToWidth(image)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.storyImage.contentMode = .Top
-                        self.storyImage.image = scaledImage
-                    })
-                })
-            }
-        }
         
         setLikeState()
         setFollowState()

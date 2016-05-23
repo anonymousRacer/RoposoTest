@@ -7,5 +7,6 @@ target 'Roposo' do
 pod 'ObjectMapper', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
 pod 'SwiftyJSON', '~> 2.3'
+pod 'UIImageViewAlignedSwift', '~> 0.1'
 end
 

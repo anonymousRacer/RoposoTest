@@ -24,15 +24,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UIImageViewAlignedSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3A2BB8EEF7455A30D8D22FE1C7644716</key>
+		<key>16E6CD4E8F511781D4DB985B3298C21D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E6BBCE2F7F8073EE60868A838BA35AE</key>
+		<key>171B4F2BC5EB537A7156C6F93DF17DB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1D3E65A3457397DB068AB18E2823BEC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9DB51BA20C2D732ECFF5ED120FA71A0</key>
+		<key>D761B48D67C205AAE38132F5A3D31051</key>
 		<dict>
 			<key>primary</key>
 			<true/>

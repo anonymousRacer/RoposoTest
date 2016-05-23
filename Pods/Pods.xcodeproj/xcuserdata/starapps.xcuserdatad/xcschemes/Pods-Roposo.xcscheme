@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9C05365C71563D6BC1B32A3A'
+               BlueprintIdentifier = 'FD36FF333EF937F934CED66A'
                BlueprintName = 'Pods-Roposo'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Roposo.framework'>

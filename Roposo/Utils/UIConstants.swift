@@ -24,10 +24,10 @@ struct Constants {
 }
 
 /*  Global fonts    */
-let _titleFont = UIFont(name: APP_FONT_NAME, size: 16.0)!
-let _subtitleFont = UIFont(name: APP_FONT_NAME, size: 14.0)!
-let _bigTitleFont = UIFont(name: APP_FONT_NAME, size: 18.0)!
-let _bigSubtitleFont = UIFont(name: APP_FONT_NAME, size: 16.0)!
+let _titleFont = UIFont(name: APP_FONT_NAME + FONT_SEMIBOLD, size: 16.0)!
+let _subtitleFont = UIFont(name: APP_FONT_NAME + FONT_REGULAR, size: 14.0)!
+let _bigTitleFont = UIFont(name: APP_FONT_NAME + FONT_SEMIBOLD, size: 18.0)!
+let _bigSubtitleFont = UIFont(name: APP_FONT_NAME + FONT_REGULAR, size: 16.0)!
 
 /*  Global images   */
 let _placeholder = UIImage(named: "ic_placeholder")

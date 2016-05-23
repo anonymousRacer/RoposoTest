@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Roposo/ObjectMapper.framework"
   install_framework "Pods-Roposo/SDWebImage.framework"
   install_framework "Pods-Roposo/SwiftyJSON.framework"
+  install_framework "Pods-Roposo/UIImageViewAlignedSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Roposo/ObjectMapper.framework"
   install_framework "Pods-Roposo/SDWebImage.framework"
   install_framework "Pods-Roposo/SwiftyJSON.framework"
+  install_framework "Pods-Roposo/UIImageViewAlignedSwift.framework"
 fi
